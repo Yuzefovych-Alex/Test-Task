@@ -5,17 +5,14 @@ import Button from "../components/Button/Button";
 import Grid from "../components/Grid/Grid";
 import Navbar from "../components/Navbar/Navbar";
 import RewardCounter from "../components/Reward-counter/Reward-counter";
-import Overlay from "../components/Overlay /Overlay"
+import Overlay from "../components/Overlay /Overlay";
 import image_five from "../assets/images/five.png";
 
-import { useState } from "react";
-import { useRef } from "react";
-import {click} from "@testing-library/user-event/dist/click";
+import { useState, useRef } from "react";
 
 function Game() {
     const [scope, setScope] = useState(0);
     const [xtwo, setXtwo] = useState(0);
-    const [selectedCards, setSelectedCards] = useState([]);
     const [overlayCard, setOverlayCard] = useState(null);
     const [fiveNumber, setFiveNumber] = useState(5);
     const [xtwoNumber, setXtwoNumber] = useState(1);
@@ -29,7 +26,6 @@ function Game() {
 
     const resetGameAllClean = () => {
         setScope(0);
-        //setSelectedCards([]);
         setOverlayCard(null);
         setFiveNumber(5);
         setXtwoNumber(1);
@@ -43,7 +39,6 @@ function Game() {
     };
 
     const resetGame = () => {
-        //setSelectedCards([]);
         setOverlayCard(null);
         setFiveNumber(5);
         setXtwoNumber(1);
@@ -54,7 +49,7 @@ function Game() {
         setResetTrigger(prev => prev + 1);
         setXtwoState(false);
         setXtwo(0);
-    }
+    };
 
     const animateCoin = (startPosition, endRect, imgSrc) => {
         return new Promise((resolve) => {
@@ -89,17 +84,17 @@ function Game() {
     };
 
     const createExplosion = (x, y) => {
-        const explosion = document.createElement('div');
-        explosion.style.position = 'absolute';
+        const explosion = document.createElement("div");
+        explosion.style.position = "absolute";
         explosion.style.left = `${x}px`;
         explosion.style.top = `${y}px`;
-        explosion.style.pointerEvents = 'none';
+        explosion.style.pointerEvents = "none";
         explosion.style.zIndex = 9999;
 
-        const colors = ['#ff0', '#f00', '#f80', '#0f0', '#0ff', '#f0f', '#fff'];
+        const colors = ["#ff0", "#f00", "#f80", "#0f0", "#0ff", "#f0f", "#fff"];
 
         for (let i = 0; i < 60; i++) {
-            const particle = document.createElement('div');
+            const particle = document.createElement("div");
             const size = Math.random() * 8 + 4;
             const angle = Math.random() * 2 * Math.PI;
             const radius = 50 + Math.random() * 100;
@@ -108,22 +103,22 @@ function Game() {
             const color = colors[Math.floor(Math.random() * colors.length)];
             const delay = Math.random() * 0.3;
 
-            particle.style.position = 'absolute';
+            particle.style.position = "absolute";
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
-            particle.style.borderRadius = '50%';
+            particle.style.borderRadius = "50%";
             particle.style.background = color;
             particle.style.boxShadow = `0 0 10px ${color}`;
-            particle.style.opacity = '1';
-            particle.style.transform = 'translate(0, 0)';
+            particle.style.opacity = "1";
+            particle.style.transform = "translate(0, 0)";
             particle.style.transition = `all 1s ease-out ${delay}s`;
 
             explosion.appendChild(particle);
 
             requestAnimationFrame(() => {
                 particle.style.transform = `translate(${xOffset}px, ${yOffset}px) scale(0.5) rotate(720deg)`;
-                particle.style.opacity = '0';
-                particle.style.filter = 'blur(4px)';
+                particle.style.opacity = "0";
+                particle.style.filter = "blur(4px)";
             });
         }
 
@@ -134,13 +129,10 @@ function Game() {
         }, 1500);
     };
 
-
     const handleMultipleCoinsOverlap = async (startPosition, clickedCard, count = 5, delay = 400) => {
         if (!balanceRef.current) return;
 
         if (clickedCard.type === "five") {
-            const endRect = balanceRef.current.getBoundingClientRect();
-
             const promises = [];
 
             for (let i = 0; i < count; i++) {
@@ -151,7 +143,7 @@ function Game() {
 
                 const p = new Promise((resolve) => {
                     setTimeout(async () => {
-                        await animateCoin(shiftedStart, endRect, image_five);
+                        await animateCoin(shiftedStart, balanceRef.current.getBoundingClientRect(), image_five);
                         resolve();
                     }, i * delay);
                 });
@@ -160,12 +152,9 @@ function Game() {
 
             await Promise.all(promises);
         } else if (clickedCard.type === "bomb") {
-            const endRect = balanceRef.current.getBoundingClientRect();
-
             createExplosion(startPosition.x, startPosition.y);
         }
     };
-
 
     const WorkCards = (card) => {
         switch (card.type) {
@@ -174,7 +163,6 @@ function Game() {
                 setCashNumber(prev => prev - 1);
                 break;
             case "bomb":
-                setTimeout(2000);
                 setOverlayCard(card);
                 setBombNumber(prev => prev - 1);
                 break;
@@ -202,13 +190,11 @@ function Game() {
         }
     };
 
-
     const handleCardReveal = (card, index) => {
         if (!gameStarted) {
             setGameStarted(true);
         }
 
-        setSelectedCards(prev => [...prev, { ...card, index }]);
         WorkCards(card);
     };
 
@@ -239,7 +225,4 @@ function Game() {
         </>
     );
 }
-
 export default Game;
-
-

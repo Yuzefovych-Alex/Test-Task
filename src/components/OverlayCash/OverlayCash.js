@@ -12,7 +12,7 @@ function OverlayCash({scope, onClose, resetGame}) {
                 the end of this run...</p>
                 <div className={styles.data}>
                     <div className={styles.overlayWrapper}>
-                        <img className={styles.image} src={image_cash} />
+                        <img className={styles.image} src={image_cash} alt=""/>
                         <div
                             className={styles.imageBox}
                             style={{ backgroundImage: `url(${image_light})` }}
@@ -23,6 +23,7 @@ function OverlayCash({scope, onClose, resetGame}) {
                     <img
                         className={styles.imageMoney}
                         src={image_money}
+                        alt=""
                     />
                     <h1 className={styles.titleMoney}>{scope}</h1>
                 </div>

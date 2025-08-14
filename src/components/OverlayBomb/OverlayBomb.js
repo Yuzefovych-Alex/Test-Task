@@ -13,7 +13,7 @@ function OverlayBomb({scope, onClose, resetGame}) {
                     and lose all rewards from this field...</p>
                 <div className={styles.data}>
                     <div className={styles.overlayWrapper}>
-                        <img className={styles.image} src={image_bomb} />
+                        <img className={styles.image} src={image_bomb} alt=""/>
                         <div
                             className={styles.imageBox}
                             style={{ backgroundImage: `url(${image_light})` }}
@@ -24,6 +24,7 @@ function OverlayBomb({scope, onClose, resetGame}) {
                     <img
                         className={styles.imageMoney}
                         src={image_money}
+                        alt=""
                     />
                     <h1 className={styles.titleMoney}>{scope}</h1>
                 </div>
@@ -38,6 +39,7 @@ function OverlayBomb({scope, onClose, resetGame}) {
                         <img
                             className={styles.buttonImageHit}
                             src={image_bomb}
+                            alt=""
                         />
                         Take a hit
                     </button>
@@ -48,6 +50,7 @@ function OverlayBomb({scope, onClose, resetGame}) {
                         <img
                             className={styles.buttonIconDefuse}
                             src={icons_defuse}
+                            alt=""
                         />
                         49
                     </button>

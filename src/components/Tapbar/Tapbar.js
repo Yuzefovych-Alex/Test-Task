@@ -11,23 +11,23 @@ function Tapbar() {
             <div className={styles.container}>
                 <ul className={styles.list}>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_office} />
+                        <img className={styles.img} src={icon_office} alt=""/>
                         <h5 className={styles.title}>Office</h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_resources} />
+                        <img className={styles.img} src={icon_resources} alt=""/>
                         <h5 className={styles.title}>Resources</h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_materials} />
+                        <img className={styles.img} src={icon_materials} alt=""/>
                         <h5 className={styles.title}>Materials</h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_goods} />
+                        <img className={styles.img} src={icon_goods} alt=""/>
                         <h5 className={styles.title}>Goods</h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_stock} />
+                        <img className={styles.img} src={icon_stock} alt=""/>
                         <h5 className={styles.title}>Stock</h5>
                     </li>
                 </ul>

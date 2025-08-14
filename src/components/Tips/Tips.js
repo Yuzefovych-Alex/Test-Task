@@ -11,31 +11,31 @@ function Tips({five, xtwo, zero, bomb, cash}){
             <div className={styles.container}>
                 <ul className={styles.list}>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_five} />
+                        <img className={styles.img} src={icon_five} alt=""/>
                         <h5 className={styles.number}>
                             {five}
                         </h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_xtwo} />
+                        <img className={styles.img} src={icon_xtwo} alt=""/>
                         <h5 className={styles.number}>
                             {xtwo}
                         </h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={`${styles.img} ${styles.imgZero}`} src={icon_zero}/>
+                        <img className={`${styles.img} ${styles.imgZero}`} src={icon_zero} alt=""/>
                         <h5 className={styles.number}>
                             {zero}
                         </h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_bomb} />
+                        <img className={styles.img} src={icon_bomb} alt=""/>
                         <h5 className={styles.number}>
                             {bomb}
                         </h5>
                     </li>
                     <li className={styles.item}>
-                        <img className={styles.img} src={icon_cash} />
+                        <img className={styles.img} src={icon_cash} alt=""/>
                         <h5 className={styles.number}>
                             {cash}
                         </h5>
