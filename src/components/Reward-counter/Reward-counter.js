@@ -1,4 +1,4 @@
-import {useRef, useEffect, forwardRef} from "react";
+import {forwardRef} from "react";
 
 import styles from "./Reward-conunter.module.css"
 import icon_five from "../../assets/icons/cash.svg";

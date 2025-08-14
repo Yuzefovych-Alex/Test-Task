@@ -1,5 +1,4 @@
 import styles from './Title.module.css';
-import image_logo from '../../assets/images/white-green-logo.png';
 
 function Title() {
     return (

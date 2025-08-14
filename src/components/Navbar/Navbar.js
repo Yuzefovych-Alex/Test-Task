@@ -1,5 +1,4 @@
 import styles from './Navbar.module.css';
-import icon_five from '../../assets/icons/cash.svg'
 import image_logo from "../../assets/images/white-green-logo.png";
 
 function Navbar() {
