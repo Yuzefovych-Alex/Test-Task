@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.RewardCounter{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    justify-items: center;
+}
+
+.container{
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+}
+
+.img{
+    width: 40px;
+    height: 40px;
+}
+
+.number{
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.xtwo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    width: 33px;
+    height: 28px;
+    border-radius: 8px;
+    padding: 8px;
+    background: linear-gradient(180deg, #2F5AAD 0%, #3973E5 25%, #3973E5 75%, #2F5AAD 100%);
+    position: absolute;
+    left: 2rem;
+    bottom: -0.5rem;
+}

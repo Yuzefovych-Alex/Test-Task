@@ -1,0 +1,30 @@
+.Button {
+    margin-top: 2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 348px;
+    height: 48px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    font-size: 18px;
+    font-weight: 800;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.0);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.buttonActive {
+    width: 348px;
+    height: 48px;
+    background: linear-gradient(to bottom, #6DBF1D, #498013);
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: 800;
+    border-radius: 7px;
+}

@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Title{
+    margin-top: 2.5rem;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+}
+
+.lineLeft, .lineRight{
+    width: 126.5px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    position: relative;
+    top: 0.7rem;
+}
+
+.title{
+    font-size: 24px;
+}

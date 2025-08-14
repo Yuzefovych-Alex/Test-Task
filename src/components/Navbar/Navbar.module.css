@@ -1,0 +1,11 @@
+
+.Navbar {
+    margin-top: 2rem;
+    display: grid;
+    justify-items: center;
+}
+
+.logo{
+    width: 61.51px;
+    height: 35.08px;
+}
