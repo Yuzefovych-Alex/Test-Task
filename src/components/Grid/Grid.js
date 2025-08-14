@@ -7,44 +7,32 @@ import image_bomb from "../../assets/images/bomb.png";
 import image_five from "../../assets/images/five.png";
 import image_fon_xtwo from "../../assets/images/x20-fon.png";
 
+import { generateCards } from "../../services/cardGenerator";
+import {
+    FIVE_COUNT, CASH_COUNT, BOMB_COUNT, XTWO_COUNT, ZERO_COUNT
+} from "../../constans/gameConstans";
+
 function Grid({ onCardReveal, resetTrigger, onCoinCreate }) {
-    const [carts, setCarts] = useState([]);
+    const [cards, setCards] = useState([]);
     const [revealed, setRevealed] = useState(Array(9).fill(false));
 
-    const five = 5;
-    const cash = 1;
-    const bomb = 1;
-    const xtwo = 1;
-    const zero = 1;
-
     useEffect(() => {
-        const fiveValues = [100, 500, 1000, 10000];
-        const fiveCards = Array(five)
-            .fill(null)
-            .map(() => ({
-                type: "five",
-                value: fiveValues[Math.floor(Math.random() * fiveValues.length)],
-            }));
+        const generated = generateCards({
+            five: FIVE_COUNT,
+            cash: CASH_COUNT,
+            bomb: BOMB_COUNT,
+            xtwo: XTWO_COUNT,
+            zero: ZERO_COUNT,
+        });
 
-        const allCarts = [
-            ...fiveCards,
-            ...Array(cash).fill({ type: "cash" }),
-            ...Array(bomb).fill({ type: "bomb" }),
-            ...Array(xtwo).fill({ type: "xtwo" }),
-            ...Array(zero).fill({ type: "zero" }),
-        ];
-
-        const shuffled = [...allCarts].sort(() => Math.random() - 0.5);
-        setCarts(shuffled);
+        setCards(generated);
         setRevealed(Array(9).fill(false));
     }, [resetTrigger]);
-
-
 
     const handleClick = (index) => {
         if (revealed[index]) return;
 
-        const clickedCard = carts[index];
+        const clickedCard = cards[index];
 
         setRevealed((prev) => {
             const updated = [...prev];
@@ -52,23 +40,21 @@ function Grid({ onCardReveal, resetTrigger, onCoinCreate }) {
             return updated;
         });
 
-        if (onCardReveal) {
-            onCardReveal(clickedCard, index);
-        }
+        onCardReveal?.(clickedCard, index);
 
         if (onCoinCreate) {
             const cardElement = document.querySelectorAll(`.${styles.item}`)[index];
             const rect = cardElement.getBoundingClientRect();
 
-            onCoinCreate({
-                x: rect.left + rect.width / 2,
-                y: rect.top + rect.height / 2
-            }, clickedCard);
+            onCoinCreate(
+                {
+                    x: rect.left + rect.width / 2,
+                    y: rect.top + rect.height / 2,
+                },
+                clickedCard
+            );
         }
     };
-
-
-
 
     const formatNumber = (num) => {
         return num >= 1000 ? `${num / 1000}K` : num;
@@ -78,7 +64,7 @@ function Grid({ onCardReveal, resetTrigger, onCoinCreate }) {
         <div className={styles.Carts}>
             <div className={styles.container}>
                 <ul className={styles.list}>
-                    {carts.map((card, index) => {
+                    {cards.map((card, index) => {
                         const isRevealed = revealed[index];
 
                         return (
@@ -115,7 +101,6 @@ function Grid({ onCardReveal, resetTrigger, onCoinCreate }) {
                                                 )}
                                             </>
                                         )}
-
 
                                         {card.type === "five" && (
                                             <>
